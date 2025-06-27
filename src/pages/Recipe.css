@@ -1,0 +1,86 @@
+.recipes-page{
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    direction: rtl;
+}
+.recipes-page h2{
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: teal;
+    align-items: center;
+}
+.recipe-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid teal;
+    background-color: pink
+}
+
+.recipes-card{
+    border: 2px solid teal;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: mediumspringgreen;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.recipes-card img{
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.recipes-card p{
+    font-size: 14px;
+    color: #666;
+}
+.recipes-card h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: teal;
+}
+.delete-button{
+    background-color:teal;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.edit-button{
+    background-color: teal;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+.delete-button:hover{
+    background-color: mediumturquoise;
+}
+
+/*רספונסיבי לנייד*/
+@media (max-width: 600px) {
+    .recipes-page{
+        padding: 10px;
+    }
+    .recipes-page h2{
+        font-size: 24px;
+    }
+    .recipes-card h3{
+        font-size: 18px;
+    }
+    .recipes-card p{
+        font-size: 15px;
+    }
+    .recipes-card button{
+        font-size: 15px;
+        padding: 8px 13px;
+    }
+}
+
+

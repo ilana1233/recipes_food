@@ -1,0 +1,25 @@
+.add-recipe-container{
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid gray;
+    background-color: aquamarine;
+    border-radius: 10px;
+    direction: rtl;
+    text-align: right;
+}
+.add-recipe-container input,
+.add-recipe-container textarea{
+width: 100%;
+margin-bottom: 10px;
+padding: 8px;
+}
+.add-recipe-container button{
+    padding: 10px;
+    background-color: teal;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+

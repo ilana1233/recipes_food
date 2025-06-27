@@ -1,0 +1,16 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background-color:aquamarine;
+    direction: rtl;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: teal;
+    font-weight: bold;
+}
+
+

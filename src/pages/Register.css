@@ -1,0 +1,25 @@
+.container-register{
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    direction: rtl;
+    text-align: right;
+    background-color: aquamarine;
+}
+.container-register input{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+.container-register button{
+    padding: 8px 12px;
+    background-color: teal;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
