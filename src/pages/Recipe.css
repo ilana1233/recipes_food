@@ -16,7 +16,8 @@
     gap: 20px;
     padding: 20px;
     border: 2px solid teal;
-    background-color: pink
+    background-color: pink;
+    overflow: hidden;
 }
 
 .recipes-card{

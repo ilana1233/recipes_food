@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import './EditRecipe.css';
+import './EditRecipes.css';
 
 export default function EditRecipe() {
   const { id } = useParams();
