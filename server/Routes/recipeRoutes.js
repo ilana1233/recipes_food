@@ -29,7 +29,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       imageUrl
     });
 
-    await recipe.save();
+    await recipes.save();
     res.status(201).json({ message: 'המתכון נוסף בהצלחה', recipe });
   } catch (error) {
     console.error('שגיאה בהוספת מתכון:', error);
@@ -51,9 +51,9 @@ router.get('/', async (req, res) => {
 // ✅ שליפת מתכון לפי מזהה
 router.get('/:id', async (req, res) => {
   try {
-    const recipes = await Recipes.find();
-    
-    res.json(recipes);
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
+    res.json(recipe);
   } catch (error) {
     console.error('שגיאה בטעינת מתכון בודד:', error);
     res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
