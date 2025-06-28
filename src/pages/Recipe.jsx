@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import './Recipe.css';
 import { useNavigate } from "react-router-dom";
-import RecipeCard from '../components/RecipeCard.jsx';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -11,12 +11,12 @@ export default function Recipes() {
 
   useEffect(() => {
     fetchRecipes();
-    //console.log('recipe',recipes);
   }, []);
 
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/recipes");
+      const res = await
+       axios.get('http://localhost:5000/api/recipes');
       const data = Array.isArray(res.data) ? res.data : [];
       setRecipes(data);
     } catch (err) {
@@ -29,7 +29,7 @@ export default function Recipes() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/recipes/${id}`);
+      await axios.delete(`http://localhost:5000/api/recipe/${id}`);
       setRecipes(recipes.filter((r) => r._id !== id));
     } catch (err) {
       alert("שגיאה במחיקת מתכון");
@@ -57,35 +57,13 @@ export default function Recipes() {
       <div className="recipe-list">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((r) => (
-            <div className="recipe-card" key={r._id}>
+            
               <RecipeCard 
               key={r._id}
               recipe={r}
               onDelete={handleDelete}
               onEdit={handleEdit}
-              />
-
-              <h3>{r.title}</h3>
-              {r.imageUrl && (
-                <img
-                  src={`http://localhost:5000/uploads/${r.imageUrl}`}
-                  alt="recipe"
-                  width="200"
-                />
-              )}
-              {/* <p><strong>תיאור:</strong> 
-              {r.description}</p>
-
-              <p><strong>מצרכים:</strong> 
-              {r.ingredients}</p>
-
-              <p><strong>הוראות הכנה:</strong>
-               {r.instructions}</p>
-
-              <button onClick={() => handleDelete(r._id)} className="delete-button">מחק</button>
-
-              <button onClick={() => handleEdit(r)} className="edit-button">ערוך</button> */}
-            </div>
+              />    
           ))
         ) : (
           <p>לא נמצאו מתכונים תואמים</p>

@@ -4,7 +4,7 @@ const Recipe = require('../models/Recipe');
 const multer = require('multer');
 const path = require('path');
 
-// הגדרת אחסון לתמונות
+// 📷 הגדרת אחסון לקבצים
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/');
@@ -13,14 +13,14 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
-// יצירת מתכון חדש
+// ✅ יצירת מתכון חדש
 router.post('/', upload.single('image'), async (req, res) => {
   try {
     const { title, description, ingredients, instructions } = req.body;
     const imageUrl = req.file ? req.file.filename : '';
-
+    
     const recipe = new Recipe({
       title,
       description,
@@ -37,18 +37,30 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
-// שליפת כל המתכונים
+// ✅ שליפת כל המתכונים
 router.get('/', async (req, res) => {
   try {
     const recipes = await Recipe.find();
-    res.json(recipes); // מאוד חשוב – מחזיר מערך ולא אובייקט
+    res.json(recipes);
   } catch (error) {
     console.error('שגיאה בטעינת מתכונים:', error);
     res.status(500).json({ message: 'שגיאה בטעינת מתכונים' });
   }
 });
 
-// מחיקת מתכון
+// ✅ שליפת מתכון לפי מזהה
+router.get('/:id', async (req, res) => {
+  try {
+    const recipes = await Recipes.find();
+    
+    res.json(recipes);
+  } catch (error) {
+    console.error('שגיאה בטעינת מתכון בודד:', error);
+    res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
+  }
+});
+
+// ✅ מחיקת מתכון
 router.delete('/:id', async (req, res) => {
   try {
     await Recipe.findByIdAndDelete(req.params.id);
@@ -59,7 +71,7 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// עדכון מתכון
+// ✅ עדכון מתכון קיים
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
     const { title, description, ingredients, instructions } = req.body;
@@ -82,3 +94,4 @@ router.put('/:id', upload.single('image'), async (req, res) => {
 });
 
 module.exports = router;
+

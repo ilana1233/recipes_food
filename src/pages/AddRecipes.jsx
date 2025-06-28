@@ -19,7 +19,7 @@ export default function AddRecipes() {
 
         try  {
             await
-             axios.post('http://localhost:5000/api/recipes',formData,{
+             axios.post('http://localhost:5000/api/recipe',formData,{
                 headers: {
                     'Content-Type': 'multipart/formData',
                     'Authorization':`Bearar ${localStorage.getItem('token')}`

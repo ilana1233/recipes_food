@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParms } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FacebookShareButton, 
          WhatsappShareButton,
@@ -10,19 +10,29 @@ import './RecipeDetails.css';
 
 
     export default function RecipeDetails(){
-        const { id } = useParms();
+        const { id } = useParams();
         const [recipe, setRecipe] = useState(null);
 
-        const pageUrl = `http:/ilana221eilat:Aa1234567@cluster0.mtgqysu.mongodb.net/${id}`;
+        // const pageUrl = `http:/ilana221eilat:Aa1234567@cluster0.mtgqysu.mongodb.net/${id}`;
 
         useEffect(() => {
-            axios
-            .get(`http://localhost:5000/api/recipes`)
-            .then((res) => setRecipe(res.data))
-            .catch((err) => console.error('שגיאה באעינת מתכון:',err));
-        }, []);
+            const fetchRecipes = async () => {
+                try {
+                    const res = await
+            axios.get(`http://localhost:5000/api/recipes/${id}`);
+                    setRecipe(res.data);
+                } catch(err) {
+                    console.error('שגיאה באעינת מתכון:',err);
+                } 
+            }; 
 
-        if (!recipe) return <p> טוען מתכון...</p>;
+        fetchRecipes();
+         }, [id]);
+
+        if (!recipe) {
+            return  <div className="recipe-details"><p>טוען מתכון...</p>
+            </div>;
+        }
     
         return (
             <div className="recipe-details">
@@ -38,6 +48,11 @@ import './RecipeDetails.css';
 
                 <p><strong>מצרכים:</strong>
                 {recipe.ingredients}</p>
+                <ul>
+                    {recipe.ingredients?.split('.').map((item, index) => (
+                        <li key={index}>{item.trim()}</li>
+                    ))}
+                </ul>
 
                 <p><strong>הוראות הכנה:</strong>
                 {recipe.instructions}</p>
