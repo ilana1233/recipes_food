@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import './Recipe.css';
 import { useNavigate } from "react-router-dom";
+import RecipeCard from '../components/RecipeCard.jsx';
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -57,6 +58,13 @@ export default function Recipes() {
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((r) => (
             <div className="recipe-card" key={r._id}>
+              <RecipeCard 
+              key={r._id}
+              recipe={r}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              />
+
               <h3>{r.title}</h3>
               {r.imageUrl && (
                 <img
@@ -65,7 +73,7 @@ export default function Recipes() {
                   width="200"
                 />
               )}
-              <p><strong>תיאור:</strong> 
+              {/* <p><strong>תיאור:</strong> 
               {r.description}</p>
 
               <p><strong>מצרכים:</strong> 
@@ -76,7 +84,7 @@ export default function Recipes() {
 
               <button onClick={() => handleDelete(r._id)} className="delete-button">מחק</button>
 
-              <button onClick={() => handleEdit(r)} className="edit-button">ערוך</button>
+              <button onClick={() => handleEdit(r)} className="edit-button">ערוך</button> */}
             </div>
           ))
         ) : (
