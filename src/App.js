@@ -5,6 +5,7 @@ import Recipe from './pages/Recipe.jsx';
 import AddRecipes from './pages/AddRecipes.jsx';
 import EditRecipes from './pages/EditRecipes.jsx';
 import Navbar from './components/Navbar.jsx';
+import RecipeDetails from './pages/RecipeDetails.jsx';
 import './App.css';
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
       <Route path="/addRecipes" element={<AddRecipes /> } ></Route>
 
       <Route path="/edit/:id" element={<EditRecipes /> } ></Route>
+
+      <Route path="/recipe/:id" element={<RecipeDetails /> }></Route>
     </Routes>
     </BrowserRouter>
   )
