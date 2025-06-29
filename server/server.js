@@ -32,8 +32,8 @@ app.use('/api/recipes', recipeRoutes);
 app.use('/uploads',
     express.static(path.join(__dirname, 'uploads')));
 
-app.use(express.static(patch.join(__dirname, '../build')));
-app.get('*', (req,res) => {
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('*', (req,res) => {
     res.sendFile(path.join(__dirname,'../build','index.html'));
 })
 

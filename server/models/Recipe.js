@@ -18,6 +18,6 @@ const recipeSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.models('Recipes', recipeSchema);
+module.exports = mongoose.model('Recipes', recipeSchema);
 
 
