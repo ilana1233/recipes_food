@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from 'axios';
+import api from "../api";
 import '../pages/Login.css';
 
 
@@ -9,7 +9,7 @@ export default function Login () {
     const [password,setPassword] = useState('');
 
     const handleLogin = async () => {
-        const { data } = await axios.post('http://localhost:5000/api/auth/login', {
+        const { data } = await api.post('/api/auth/login', {
             email,password
         });
 

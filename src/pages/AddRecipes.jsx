@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import './AddRecipes.css';
 
 export default function AddRecipes() {
@@ -19,7 +19,7 @@ export default function AddRecipes() {
 
         try  {
             await
-             axios.post('http://localhost:5000/api/recipes',formData,{
+             api.post('/recipes',formData,{
                 headers: {
                     'Content-Type': 'multipart/formData',
                     'Authorization':`Bearar ${localStorage.getItem('token')}`

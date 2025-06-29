@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from "../api";
 import { FacebookShareButton, 
          WhatsappShareButton,
         FacebookIcon,
@@ -13,13 +13,13 @@ import './RecipeDetails.css';
         const { id } = useParams();
         const [recipe, setRecipe] = useState(null);
 
-        // const pageUrl = `http:/ilana221eilat:Aa1234567@cluster0.mtgqysu.mongodb.net/${id}`;
+        const pageUrl = `https://recipes-food-i2xb.onrender.com/addRecipes${id}`;
 
         useEffect(() => {
             const fetchRecipes = async () => {
                 try {
                     const res = await
-            axios.get(`http://localhost:5000/api/recipes/${id}`);
+            api.get(`/recipes/${id}`);
                     setRecipe(res.data);
                 } catch(err) {
                     console.error('שגיאה באעינת מתכון:',err);

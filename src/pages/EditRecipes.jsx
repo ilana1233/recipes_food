@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useParams, useNavigate } from 'react-router-dom';
 import './EditRecipes.css';
 
@@ -15,7 +15,7 @@ export default function EditRecipe() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/recipes/${id}`)
+    api.get(`/api/recipes/${id}`)
       .then(res => setForm(res.data))
       .catch(err => alert('שגיאה בטעינת מתכון'));
   }, [id]);

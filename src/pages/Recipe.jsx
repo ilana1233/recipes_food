@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import api from "../api";
 import './Recipe.css';
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
@@ -15,7 +16,7 @@ export default function Recipes() {
 
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/recipes");
+      const res = await api.get('/recipes');
       const data = Array.isArray(res.data) ? res.data : [];
       setRecipes(data);
     } catch (err) {
