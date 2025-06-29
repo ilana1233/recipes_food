@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
 // ✅ שליפת מתכון לפי מזהה
 router.get('/', async (req, res) => {
   try {
-    const recipes = await Recipe.findById(req.params.id);
+    const recipes = await Recipe.find();
     // if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
     res.json(recipes);
   } catch (error) {
