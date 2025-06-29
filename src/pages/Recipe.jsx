@@ -61,7 +61,7 @@ export default function Recipes() {
               key={r._id}
               recipe={r}
               onDelete={handleDelete}
-              onEdit={handleEdit}
+              onEdit={() => navigate(`/edit/${r._id}`)}
             />
           ))
         ) : (

@@ -35,7 +35,7 @@ import './RecipeDetails.css';
             <div className="recipe-details">
                 <h2>{recipe.title}</h2>
                  {recipe.imageUrl && (
-                    <img src={`http://localhost:5000/uploads/${recipe.imageUrl}`}
+                    <img src={`http://localhost:5000/uploads/${recipe.pageUrl}`}
                     alt={recipe.title}
                     width="300"
                     /> 
