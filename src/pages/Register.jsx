@@ -20,7 +20,7 @@ export default function Register() {
     const handleRegister = async () => {
        
         try {
-            await api.post(`${API_BASE}/api/auth/register`, formData);
+            await api.post(`/auth/register`, formData);
              
             alert("נרשמת בהצלחה כעת אפשר להתחבר");
          } catch (error) {

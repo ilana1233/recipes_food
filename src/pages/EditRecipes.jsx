@@ -26,7 +26,7 @@ export default function EditRecipe() {
 
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/recipes/${id}`, form);
+      await api.put(`/recipes/${id}`, form);
       alert('המתכון עודכן בהצלחה');
       navigate('/recipes');
     } catch (err) {
