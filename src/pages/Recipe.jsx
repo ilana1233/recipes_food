@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api"; // ודאי ש־api מוגדר עם baseURL
-import './Recipe.css';
+import api from "../api";
+import "./Recipe.css";
 import RecipeCard from "../components/RecipeCard";
 
 export default function Recipes() {
@@ -15,7 +15,7 @@ export default function Recipes() {
 
   const fetchRecipes = async () => {
     try {
-      const res = await api.get('/recipes'); // שולח ל־/api/recipes דרך api.js
+      const res = await api.get("/recipes");
       const data = Array.isArray(res.data) ? res.data : [];
       setRecipes(data);
     } catch (err) {
@@ -53,6 +53,7 @@ export default function Recipes() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+
       <div className="recipe-list">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((r) => (
@@ -70,3 +71,4 @@ export default function Recipes() {
     </div>
   );
 }
+
