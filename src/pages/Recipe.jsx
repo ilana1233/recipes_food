@@ -19,7 +19,7 @@ export default function Recipes() {
       const data = Array.isArray(res.data) ? res.data : [];
       setRecipes(data);
     } catch (err) {
-      console.error("שגיאה בטעינת מתכונים", err);
+      console.error('שגיאה בטעינת מתכונים', err);
     }
   };
 

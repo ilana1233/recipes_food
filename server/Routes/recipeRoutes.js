@@ -49,11 +49,11 @@ router.get('/', async (req, res) => {
 });
 
 // ✅ שליפת מתכון לפי מזהה
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const recipe = await Recipe.findById(req.params.id);
-    if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
-    res.json(recipe);
+    const recipes = await Recipe.findById(req.params.id);
+    // if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
+    res.json(recipes);
   } catch (error) {
     console.error('שגיאה בטעינת מתכון בודד:', error);
     res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
