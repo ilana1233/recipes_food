@@ -29,7 +29,7 @@ export default function Recipes() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/recipes/${id}`);
+      await api.delete(`/recipes/${id}`);
       setRecipes((prev) => prev.filter((r) => r._id !== id));
     } catch (err) {
       alert("שגיאה במחיקת מתכון");
