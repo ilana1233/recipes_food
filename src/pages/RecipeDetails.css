@@ -31,3 +31,15 @@
     display: flex;
     gap: 10px;
 }
+.back-button{
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: teal;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.back-button:hovr{
+    background-color: aquamarine;
+}

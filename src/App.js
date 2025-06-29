@@ -23,7 +23,7 @@ function App() {
 
       <Route path="/edit/:id" element={<EditRecipes /> } ></Route>
 
-      <Route path="/recipe/:id" element={<RecipeDetails /> }></Route>
+      <Route path="/recipes/:id" element={<RecipeDetails /> }></Route>
 
     </Routes>
     </BrowserRouter>

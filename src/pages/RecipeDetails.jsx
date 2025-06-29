@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FacebookShareButton, 
          WhatsappShareButton,
@@ -29,10 +29,7 @@ import './RecipeDetails.css';
         fetchRecipes();
          }, [id]);
 
-        if (!recipe) {
-            return  <div className="recipe-details"><p>טוען מתכון...</p>
-            </div>;
-        }
+        if (!recipe)  return  <p>טוען מתכון...</p>;
     
         return (
             <div className="recipe-details">
@@ -56,6 +53,8 @@ import './RecipeDetails.css';
 
                 <p><strong>הוראות הכנה:</strong>
                 {recipe.instructions}</p>
+
+                <button onClick={() => Navigate('/recipes')} className="back-button">חזור לרשימת המתכונים</button>
 
                 <div className="share-button">
                      <h4>שיתוף מתכון:</h4>

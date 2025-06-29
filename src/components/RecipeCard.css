@@ -40,15 +40,25 @@
     background-color: papayawhip;
     color: #333;
 }
+.details-button{
+    background-color: teal;
+    color: #fff;
+    margin: 6px 4px  0 4px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 .recipe-card .edit-button:hover{
-    background-color: plum;
+    background-color: aqua;
 }
 .recipe-card button:first-of-type{
-    background-color: mediumorchid;
+    background-color: palegreen;
     color: white;
 }
 .recipe-card button:first-of-type:hover{
-    background-color: plum;
+    background-color:aqua;
 }
 .recipe-card a{
     text-decoration: none;
