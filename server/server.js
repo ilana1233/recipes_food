@@ -32,8 +32,10 @@ app.use('/api/recipes', recipeRoutes);
 app.use('/uploads',
     express.static(path.join(__dirname, 'uploads')));
 
-// app.use(express.static(patch.join(__dirname, '../make_food/build')));
-
+app.use(express.static(patch.join(__dirname, '../build')));
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname,'../build','index.html'));
+})
 
 app.listen(5000, () => {
   console.log(`🔥 Server running on port ${PORT}`);
