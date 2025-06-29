@@ -1,10 +1,11 @@
+
 const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/Recipe');
 const multer = require('multer');
 const path = require('path');
 
-// 📷 הגדרת אחסון לקבצים
+// הגדרת אחסון לקבצים
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/');
@@ -29,7 +30,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       imageUrl
     });
 
-    await recipes.save();
+    await recipe.save(); // ✅ תוקן
     res.status(201).json({ message: 'המתכון נוסף בהצלחה', recipe });
   } catch (error) {
     console.error('שגיאה בהוספת מתכון:', error);
@@ -49,11 +50,11 @@ router.get('/', async (req, res) => {
 });
 
 // ✅ שליפת מתכון לפי מזהה
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const recipes = await Recipe.find();
-    // if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
-    res.json(recipes);
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
+    res.json(recipe);
   } catch (error) {
     console.error('שגיאה בטעינת מתכון בודד:', error);
     res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
@@ -75,7 +76,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
     const { title, description, ingredients, instructions } = req.body;
-    const imageUrl = req.file ? req.file.filename :'';
+    const imageUrl = req.file ? req.file.filename : '';
 
     const updatedFields = {
       title,
@@ -94,4 +95,3 @@ router.put('/:id', upload.single('image'), async (req, res) => {
 });
 
 module.exports = router;
-
