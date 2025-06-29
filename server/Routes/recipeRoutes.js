@@ -38,28 +38,28 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
-// ✅ שליפת כל המתכונים
-router.get('/', async (req, res) => {
-  try {
-    const recipes = await Recipe.find();
-    res.json(recipes);
-  } catch (error) {
-    console.error('שגיאה בטעינת מתכונים:', error);
-    res.status(500).json({ message: 'שגיאה בטעינת מתכונים' });
-  }
-});
-
-// // ✅ שליפת מתכון לפי מזהה
-// router.get('/:id', async (req, res) => {
+// // ✅ שליפת כל המתכונים
+// router.get('/', async (req, res) => {
 //   try {
-//     const recipe = await Recipe.findById(req.params.id);
-//     if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
-//     res.json(recipe);
+//     const recipes = await Recipe.find();
+//     res.json(recipes);
 //   } catch (error) {
-//     console.error('שגיאה בטעינת מתכון בודד:', error);
-//     res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
+//     console.error('שגיאה בטעינת מתכונים:', error);
+//     res.status(500).json({ message: 'שגיאה בטעינת מתכונים' });
 //   }
 // });
+
+// ✅ שליפת מתכון לפי מזהה
+router.get('/:id', async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) return res.status(404).json({ message: 'לא נמצא מתכון' });
+    res.json(recipe);
+  } catch (error) {
+    console.error('שגיאה בטעינת מתכון בודד:', error);
+    res.status(500).json({ message: 'שגיאה בטעינת מתכון בודד' });
+  }
+});
 
 // ✅ מחיקת מתכון
 router.delete('/:id', async (req, res) => {
