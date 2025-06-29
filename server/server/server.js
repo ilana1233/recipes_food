@@ -21,14 +21,17 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
+// Serve static uploads (images)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 
-// Static files from React build
+// Serve React build
 app.use(express.static(path.join(__dirname, '../build')));
 
-// For SPA routes - always send index.html
+// For any other route - return React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
