@@ -20,7 +20,8 @@ export default function Register() {
     const handleRegister = async () => {
        
         try {
-            await axios.post('http://localhost:5000/api/auth/register', formData);
+            const API_BASE = process.env.REACT_APP_API_URL ||'';
+            await axios.post(`${API_BASE}/api/auth/register`, formData);
              
             alert("נרשמת בהצלחה כעת אפשר להתחבר");
          } catch (error) {

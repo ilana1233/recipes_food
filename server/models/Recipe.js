@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+const mongoose = Require('mongoose');
 
 const recipeSchema = new mongoose.Schema({
   title: {
