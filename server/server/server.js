@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -21,22 +22,20 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// Serve static uploads (images)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 // API routes
 app.use('/api/auth', authRoutes);
-app.use('/api/recipes', recipeRoutes);
+app.use('/api/recipes', recipeRoutes); // 👈 הכרחי!
 
-// Serve React build
+// Static files from React
 app.use(express.static(path.join(__dirname, '../build')));
 
-// For any other route - return React app
+// For React SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-// Start server
+// Start the server
 app.listen(PORT, () => {
   console.log(`🔥 Server running on port ${PORT}`);
 });
+
