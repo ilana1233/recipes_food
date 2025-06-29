@@ -75,7 +75,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
     const { title, description, ingredients, instructions } = req.body;
-    const imageUrl = req.file ? req.file.filename : undefined;
+    const imageUrl = req.file ? req.file.filename :'';
 
     const updatedFields = {
       title,

@@ -9,7 +9,9 @@ export default function AddRecipes() {
     const [description,setDescription] = useState('');
     const [image,setImage] = useState(null);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) =>
+         {
+            e.preventDefault();
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
@@ -18,8 +20,7 @@ export default function AddRecipes() {
         formData.append('image', image);
 
         try  {
-            await
-             api.post('/recipes',formData,{
+            const res = await api.post("/recipes",formData,{
                 headers: {
                     'Content-Type': 'multipart/formData',
                     'Authorization':`Bearar ${localStorage.getItem('token')}`
