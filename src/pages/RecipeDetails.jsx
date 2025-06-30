@@ -13,7 +13,7 @@ import './RecipeDetails.css';
         const { id } = useParams();
         const [recipe, setRecipe] = useState(null);
 
-        const pageUrl = `https://recipes-food-i2xb.onrender.com/addRecipes${id}`;
+        // const pageUrl = `https://recipes-food-i2xb.onrender.com/addRecipes${id}`;
 
         useEffect(() => {
             const fetchRecipes = async () => {

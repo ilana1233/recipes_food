@@ -26,7 +26,7 @@ export default function AddRecipes() {
                     'Authorization':`Bearar ${localStorage.getItem('token')}`
                 }
             });
-            alert('המתכון נוסף בהצלחה');
+            alert('המתכון נוסף בהצלחה',res.data);
             setTitle('');
             setDescription('');
             setIngredients('');
