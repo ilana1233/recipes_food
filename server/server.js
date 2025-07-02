@@ -1,14 +1,14 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const Recipe = require('../server/models/Recipe');
+const Recipe = require('./models/Recipe');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
-const authRoutes = require('./server/routes/authRoutes');
-const recipeRoutes = require('./server/routes/recipeRoutes');
-const router = require('./server/routes/authRoutes');
+const authRoutes = require('./Routes/authRoutes');
+const recipeRoutes = require('./routes/recipeRoutes');
+// const router = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/auth', authRoutes);
 app.use('/api/recipe', recipeRoutes); // 👈 הכרחי!
 
-router.get('/', async (req,res) => {
+router.get('/api/recipes/:id', async (req,res) => {
   const recipes = await Recipe.find();
   res.json(recipes);
 });
@@ -40,7 +40,7 @@ app.post('/api/recipe', async (req,res) => {
   }
 
   try{
-    const newRecipe = newRecipe({ title,ingredients,instructions });
+    const newRecipe = new Recipe({ title,ingredients,instructions });
     await newRecipe.save();
     res.status(201).json(newRecipe);
   } catch (error) {
