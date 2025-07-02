@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const authRoutes = require('./Routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
-// const router = require('./routes/authRoutes');
+// const Router = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/auth', authRoutes);
 app.use('/api/recipe', recipeRoutes); // 👈 הכרחי!
 
-router.get('/api/recipes/:id', async (req,res) => {
+app.get('/api/recipes/:id', async (req,res) => {
   const recipes = await Recipe.find();
   res.json(recipes);
 });
