@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Recipe = require('./models/Recipe');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const path = require('path');
 require('dotenv').config();
