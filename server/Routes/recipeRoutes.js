@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Recipe = require('../models/Recipe');
+const Recipe = require('./models/Recipe');
 const multer = require('multer');
 const path = require('path');
 

@@ -4,10 +4,11 @@ const mongoose = require('mongoose');
 const Recipe = require('./models/Recipe');
 const cors = require('cors');
 const bcryptjs = require('bcryptjs');
-console.log(bcryptjs)
+
 
 const path = require('path');
 require('dotenv').config();
+
 
 const authRoutes = require('./Routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
