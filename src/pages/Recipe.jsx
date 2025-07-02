@@ -43,7 +43,7 @@ export default function Recipes() {
     }
   };
 
-  api.post('https://recipes-food-i2xb.onrender.com/api/recipe', {
+  api.post('https://localhost:5000/api/recipe', {
     title:'כותרת',
     ingredients:'מצרכים',
     instructions:'הוראות הכנה'
