@@ -10,18 +10,26 @@ export default function Recipes() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    async function fetchRecipes() {
+      try {
+        const response = await api.get('https://recipes-food-i2xb.onrender.com/api/recipe');
+        setRecipes(response.data);
+      } catch (error) {
+        console.error('שגיאה בטעינת מתכונים',error);
+      }
+    }
     fetchRecipes();
   }, []);
 
-  const fetchRecipes = async () => {
-    try {
-      const res = await api.get("/recipes");
-      const data = Array.isArray(res.data) ? res.data : [];
-      setRecipes(data);
-    } catch (err) {
-      console.error('שגיאה בטעינת מתכונים', err);
-    }
-  };
+  // const fetchRecipes = async () => {
+  //   try {
+  //     const res = await api.get("/recipes");
+  //     const data = Array.isArray(res.data) ? res.data : [];
+  //     setRecipes(data);
+  //   } catch (err) {
+  //     console.error('שגיאה בטעינת מתכונים', err);
+  //   }
+  // };
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("את בטוחה שתרצי למחוק את המתכון?");
@@ -34,6 +42,12 @@ export default function Recipes() {
       alert("שגיאה במחיקת מתכון");
     }
   };
+
+  api.post('https://recipes-food-i2xb.onrender.com/api/recipe', {
+    title:'כותרת',
+    ingredients:'מצרכים',
+    instructions:'הוראות הכנה'
+  });
 
   const handleEdit = (recipe) => {
     navigate(`/edit/${recipe._id}`);
