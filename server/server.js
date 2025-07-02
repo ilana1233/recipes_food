@@ -6,9 +6,9 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
-const authRoutes = require('../server/routes/authRoutes');
-const recipeRoutes = require('../server/routes/recipeRoutes');
-const router = require('../server/routes/authRoutes');
+const authRoutes = require('./server/routes/authRoutes');
+const recipeRoutes = require('./server/routes/recipeRoutes');
+const router = require('./server/routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -50,11 +50,11 @@ app.post('/api/recipe', async (req,res) => {
 });
 
 // Static files from React
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // For React SPA routing
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // Start the server
