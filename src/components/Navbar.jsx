@@ -5,7 +5,7 @@ import './Navbar.css';
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <Link to="/">מתכונים</Link>
+            <Link to="/recipe">מתכונים</Link>
             <Link to="/addRecipes">הוסף מתכון</Link>
 
             <Link to="/login">התחבר</Link>
