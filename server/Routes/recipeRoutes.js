@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/Recipe');
@@ -21,7 +20,7 @@ router.post('/', upload.single('image'), async (req, res) => {
   try {
     const { title, description, ingredients, instructions } = req.body;
     const imageUrl = req.file ? req.file.filename : '';
-    
+
     const recipe = new Recipe({
       title,
       description,
@@ -30,7 +29,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       imageUrl
     });
 
-    await recipe.save(); // ✅ תוקן
+    await recipe.save();
     res.status(201).json({ message: 'המתכון נוסף בהצלחה', recipe });
   } catch (error) {
     console.error('שגיאה בהוספת מתכון:', error);
@@ -38,16 +37,16 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
-// // ✅ שליפת כל המתכונים
-// router.get('/', async (req, res) => {
-//   try {
-//     const recipes = await Recipe.find();
-//     res.json(recipes);
-//   } catch (error) {
-//     console.error('שגיאה בטעינת מתכונים:', error);
-//     res.status(500).json({ message: 'שגיאה בטעינת מתכונים' });
-//   }
-// });
+// ✅ שליפת כל המתכונים
+router.get('/', async (req, res) => {
+  try {
+    const recipes = await Recipe.find();
+    res.json(recipes);
+  } catch (error) {
+    console.error('שגיאה בטעינת מתכונים:', error);
+    res.status(500).json({ message: 'שגיאה בטעינת מתכונים' });
+  }
+});
 
 // ✅ שליפת מתכון לפי מזהה
 router.get('/:id', async (req, res) => {
