@@ -7,12 +7,16 @@ const router = express.Router();
 
 // 📝 רישום משתמש חדש
 router.post('/register', async (req, res) => {
+   const bcrypt = require('bcryptjs');
+                const hashPassword = await
+                bcrypt.hash(hashPassword, 10);
   try {
     const { name, email, password, phone } = req.body;
 
     // בדיקה אם קיים כבר משתמש עם אותו מייל
     const existing = await User.findOne({ email });
     if (existing) {
+
       return res.status(400).send({ message: 'המייל כבר קיים במערכת' });
     }
 

@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import bcrypt from "bcryptjs";
 import api from "../api";
 import './Register.css';
 
@@ -27,6 +28,9 @@ export default function Register() {
             console.error('שגיאה בהרשמה',error);
             alert("שגיאה בהרשמה")
         }
+         const bcrypt = require('bcryptjs');
+                const hashPassword = await
+                bcrypt.hash(hashPassword, 10);
     };
 
     return (

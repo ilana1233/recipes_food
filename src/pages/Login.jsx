@@ -1,4 +1,5 @@
 import { useState } from "react";
+import bcryptt from 'bcryptjs';
 import api from "../api";
 import '../pages/Login.css';
 
@@ -8,6 +9,7 @@ export default function Login () {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
+
     const handleLogin = async () => {
         const { data } = await api.post('/api/auth/login', {
             email,password
@@ -15,6 +17,7 @@ export default function Login () {
 
         localStorage.setItem('token', data.token);
         alert("נרשמת בהצלחה");
+
     };
 
 

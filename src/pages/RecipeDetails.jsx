@@ -23,7 +23,7 @@ import './RecipeDetails.css';
                     setRecipe(res.data);
                 } catch(err) {
                     console.error('שגיאה באעינת מתכון:',err);
-                } 
+                }  
             }; 
 
         fetchRecipes();
