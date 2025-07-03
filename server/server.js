@@ -2,8 +2,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Recipe = require('./models/Recipe');
-const cors = require('cors');
 const bcrypt = require('bcryptjs');
+console.log(bcrypt);
+const cors = require('cors');
 
 const path = require('path');
 require('dotenv').config();
