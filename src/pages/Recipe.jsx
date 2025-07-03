@@ -12,7 +12,7 @@ export default function Recipes() {
   useEffect(() => {
     async function fetchRecipes() {
       try {
-        const response = await api.get('https://recipe-food-yvy7.onrender.com/api/recipe');
+        const response = await api.get('https://recipe-food-yvy7.onrender.com/api/recipes');
         setRecipes(response.data);
       } catch (error) {
         console.error('שגיאה בטעינת מתכונים',error);
@@ -43,7 +43,7 @@ export default function Recipes() {
     }
   };
 
-  api.post('https://recipe-food-yvy7.onrender.com/api/recipe', {
+  api.post('https://recipe-food-yvy7.onrender.com/api/recipes', {
     title:'כותרת',
     ingredients:'מצרכים',
     instructions:'הוראות הכנה'
