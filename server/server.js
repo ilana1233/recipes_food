@@ -10,7 +10,7 @@ const path = require('path');
 require('dotenv').config();
 
 const authRoutes = require('./Routes/authRoutes');
-const recipeRoutes = require('./routes/recipeRoutes');
+const recipeRoutes = require('./Routes/recipeRoutes');
 // const Router = require('./routes/authRoutes');
 
 const app = express();
