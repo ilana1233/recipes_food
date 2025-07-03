@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import bcrypt from "bcryptjs";
 import api from "../api";
 import './AddRecipes.css';
 
@@ -23,8 +22,7 @@ export default function AddRecipes() {
         try  {
             const res = await api.post("/recipes",formData,{
                 headers: {
-                    'Content-Type': 'multipart/formData',
-                    'Authorization':`Bearar ${localStorage.getItem('token')}`
+                    'Authorization':`Bearer ${localStorage.getItem('token')}`
                 }
             });
             alert('המתכון נוסף בהצלחה',res.data);
