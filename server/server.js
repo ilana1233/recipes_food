@@ -35,7 +35,7 @@ app.use('/api/recipes', recipeRoutes); // 👈 זה מנהל הכל (get, post �
 app.use(express.static(path.join(__dirname, 'build')));
 
 // SPA fallback (React routing)
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
